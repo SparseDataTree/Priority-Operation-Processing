@@ -31,6 +31,7 @@
         <module>automated-retry</module>
         <module>scheduling</module>
         <module>handler</module>
+        <module>tutorials</module>
     </modules>
     <build>
         <plugins>

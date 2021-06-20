@@ -50,6 +50,8 @@ public abstract class BaseAgendaSchedulerTest
         return IntStream.range(0, readyAgendaCount).mapToObj(i ->
         {
             ReadyAgenda readyAgenda = new ReadyAgenda();
+            readyAgenda.setId(customerId+"_ready");
+            readyAgenda.setAgendaId(customerId + "_agenda");
             readyAgenda.setCustomerId(customerId);
             return readyAgenda;
         }).collect(Collectors.toList());

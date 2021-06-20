@@ -1,28 +1,27 @@
 package com.comcast.pop.persistence.impl;
 
 import com.comcast.pop.object.api.IdentifiedObject;
+import com.comcast.pop.object.api.UUIDGenerator;
 import com.comcast.pop.persistence.api.DataObjectFeed;
 import com.comcast.pop.persistence.api.ObjectPersister;
 import com.comcast.pop.persistence.api.query.Query;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MemoryObjectPersister<T extends IdentifiedObject> implements ObjectPersister<T>
 {
-    private Map<String, T> objectPersistenceMap;
+    private static UUIDGenerator uuidGenerator = new UUIDGenerator();
+    protected Map<String, T> objectPersistenceMap;
 
     public MemoryObjectPersister()
     {
-        objectPersistenceMap = new HashMap<>();
+        objectPersistenceMap = new LinkedHashMap<>();
     }
 
     @Override
     public DataObjectFeed<T> retrieve(List<Query> queries)
     {
-        throw new NotImplementedException();
+        throw new RuntimeException();
     }
 
     @Override
@@ -34,6 +33,10 @@ public class MemoryObjectPersister<T extends IdentifiedObject> implements Object
     @Override
     public T persist(T object)
     {
+        if(object.getId() == null)
+        {
+           object.setId(uuidGenerator.generate());
+        }
         objectPersistenceMap.put(object.getId(), object);
         return object;
     }

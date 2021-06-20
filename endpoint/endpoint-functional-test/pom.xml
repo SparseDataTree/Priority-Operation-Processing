@@ -27,7 +27,7 @@
         <spring-version>4.3.21.RELEASE</spring-version>
         <commons-http-client.version>3.1</commons-http-client.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
-        <commons-io.version>2.6</commons-io.version>
+        <commons-io.version>2.7</commons-io.version>
         <skipITTests>true</skipITTests>
         <test-suite>testng.xml</test-suite>
         <surefireReportDir>surefire-reports</surefireReportDir>
