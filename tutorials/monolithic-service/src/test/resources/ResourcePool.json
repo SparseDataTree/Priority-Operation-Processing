@@ -1,0 +1,7 @@
+{
+  "id": "testResourcePoolId",
+  "title": "Test ResourcePool",
+  "insightIds": [
+      "testInsightId"
+  ]
+}
