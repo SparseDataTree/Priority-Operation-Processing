@@ -1,0 +1,8 @@
+{
+  "id":"testCustomerId",
+  "customerId":"testCustomerId",
+  "resourcePoolId":"testResourcePoolId",
+  "isGlobal": "true",
+  "billingCode":"My billing code",
+  "title":"test account"
+}

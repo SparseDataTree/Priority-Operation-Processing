@@ -1,0 +1,26 @@
+{
+  "id": "testInsight",
+  "resourcePoolId": "testResourcePoolId",
+  "isGlobal": "true",
+  "title": "My Insight",
+  "queueName" : "testQueue",
+  "queueSize": "5",
+  "schedulingAlgorithm": "FirstInFirstOut",
+  "allowedCustomerIds": ["testCustomerId"],
+  "mappers":
+  {
+    "paramMap":
+    [
+      "param.1",
+      "param.2"
+    ],
+    "operationName":
+    [
+      "sample.1"
+    ],
+    "operationType":
+    [
+      "sample"
+    ]
+  }
+}

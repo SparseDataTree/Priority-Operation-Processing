@@ -13,8 +13,8 @@ public class AbstractEndpointStore<T extends IdentifiedObject> implements Endpoi
 {
     static UUIDGenerator generator = new UUIDGenerator();
 
-    T dummy = (T) new DummyIdentifiedObject();
-    Date dummyDate = new Date(0l);
+//    T dummy = (T) new DummyIdentifiedObject();
+//    Date dummyDate = new Date(0l);
     Map<String, AbstractPersisted<T>> endpointMap = new HashMap<>();
     @Override
     public T persist( T t)
@@ -59,7 +59,7 @@ public class AbstractEndpointStore<T extends IdentifiedObject> implements Endpoi
         {
             return endpointMap.get(id).get();
         }
-        return dummy;
+        return null;
     }
 
     @Override
@@ -71,7 +71,7 @@ public class AbstractEndpointStore<T extends IdentifiedObject> implements Endpoi
             apt.put(t);
             return t;
         }
-        return dummy;
+        return null;
     }
 
     @Override
@@ -90,7 +90,7 @@ public class AbstractEndpointStore<T extends IdentifiedObject> implements Endpoi
         {
             return endpointMap.get(id).getAddedTime();
         }
-        return dummyDate;
+        return null;
     }
 
     @Override
@@ -100,6 +100,6 @@ public class AbstractEndpointStore<T extends IdentifiedObject> implements Endpoi
         {
             return endpointMap.get(id).getUpdatedTime();
         }
-        return dummyDate;
+        return null;
     }
 }

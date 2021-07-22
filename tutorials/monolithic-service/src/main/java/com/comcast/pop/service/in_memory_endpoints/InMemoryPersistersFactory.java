@@ -9,12 +9,10 @@ import com.comcast.pop.api.progress.AgendaProgress;
 import com.comcast.pop.api.progress.OperationProgress;
 import com.comcast.pop.persistence.api.ObjectPersister;
 import com.comcast.pop.scheduling.api.ReadyAgenda;
+import com.comcast.pop.scheduling.queue.InsightScheduleInfo;
 
-public class InMemoryPersisters
+public class InMemoryPersistersFactory
 {
-
-    private static InMemoryPersisters singletonPersisters = InMemoryPersisters.makeDefault();
-
     private final ObjectPersister<Agenda> agendaPersister;
     private final ObjectPersister<AgendaTemplate> agendaTemplatePersister;
     private final ObjectPersister<AgendaProgress> agendaProgressPersister;
@@ -23,10 +21,9 @@ public class InMemoryPersisters
     private final ObjectPersister<Insight> insightPersister;
     private final ObjectPersister<Customer> customerPersister;
     private final ObjectPersister<ResourcePool> resourcePoolPersister;
+    private final ObjectPersister<InsightScheduleInfo> insightScheduleInfoPersister;
 
-
-//     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-     private InMemoryPersisters(ObjectPersister<Agenda> agendaPersister, ObjectPersister<AgendaTemplate> agendaTemplatePersister, ObjectPersister<AgendaProgress> agendaProgressPersister, ObjectPersister<ReadyAgenda> readyAgendaPersister, ObjectPersister<OperationProgress> operationProgressPersister, ObjectPersister<Insight> insightPersister, ObjectPersister<Customer> customerPersister, ObjectPersister<ResourcePool> resourcePoolPersister)
+     public InMemoryPersistersFactory(ObjectPersister<Agenda> agendaPersister, ObjectPersister<AgendaTemplate> agendaTemplatePersister, ObjectPersister<AgendaProgress> agendaProgressPersister, ObjectPersister<ReadyAgenda> readyAgendaPersister, ObjectPersister<OperationProgress> operationProgressPersister, ObjectPersister<Insight> insightPersister, ObjectPersister<Customer> customerPersister, ObjectPersister<ResourcePool> resourcePoolPersister, ObjectPersister<InsightScheduleInfo> insightScheduleInfoPersister)
     {
         this.agendaPersister = agendaPersister;
         this.agendaTemplatePersister = agendaTemplatePersister;
@@ -36,25 +33,7 @@ public class InMemoryPersisters
         this.insightPersister = insightPersister;
         this.customerPersister = customerPersister;
         this.resourcePoolPersister = resourcePoolPersister;
-    }
-
-    private static InMemoryPersisters makeDefault()
-    {
-        ObjectPersister<Agenda> agendaPersister_local = new AgendaStore();
-        ObjectPersister<AgendaTemplate> agendaTemplatePersister_local = new AgendaTemplateStore();
-        ObjectPersister<AgendaProgress> agendaProgressPersister_local = new AgendaProgressStore();
-        ObjectPersister<ReadyAgenda> readyAgendaPersister_local = new ReadyAgendaStore();
-        ObjectPersister<OperationProgress> operationProgressPersister_local = new OperationProgressStore();
-        ObjectPersister<Insight> insightPersister_local = new InsightStore();
-        ObjectPersister<Customer> customerPersister_local = new CustomerStore();
-        ObjectPersister<ResourcePool> resourcePoolPersister_local = new ResourcePoolStore();
-
-        return new InMemoryPersisters(agendaPersister_local, agendaTemplatePersister_local, agendaProgressPersister_local, readyAgendaPersister_local,operationProgressPersister_local,insightPersister_local, customerPersister_local, resourcePoolPersister_local);
-    }
-
-    public static InMemoryPersisters getPersisters()
-    {
-        return singletonPersisters;
+        this.insightScheduleInfoPersister = insightScheduleInfoPersister;
     }
 
     public ObjectPersister<Agenda> getAgendaPersister()
@@ -95,5 +74,10 @@ public class InMemoryPersisters
     public ObjectPersister<ResourcePool> getResourcePoolPersister()
     {
         return resourcePoolPersister;
+    }
+
+    public ObjectPersister<InsightScheduleInfo> getInsightScheduleInfoPersister()
+    {
+        return insightScheduleInfoPersister;
     }
 }

@@ -1,6 +1,7 @@
 package com.comcast.pop.service.queues;
 
 import com.comcast.pop.api.progress.AgendaProgress;
+import com.comcast.pop.scheduling.api.AgendaInfo;
 import com.comcast.pop.scheduling.api.ReadyAgenda;
 
 /*
@@ -13,12 +14,11 @@ import com.comcast.pop.scheduling.api.ReadyAgenda;
  */
 public class MemoryQueueFactories
 {
-    private static MemoryQueueFactories memoryQueueFactories = new MemoryQueueFactories();
-
     private MemoryQueueFactory<ReadyAgenda> readyAgendaMemoryQueueFactory = new MemoryQueueFactory<>();
     private MemoryQueueFactory<AgendaProgress> agendaProgressMemoryQueueFactory = new MemoryQueueFactory<>();
+    private MemoryQueueFactory<AgendaInfo> agendaInfoMemoryQueueFactory = new MemoryQueueFactory<>();
 
-    private MemoryQueueFactories()
+    public MemoryQueueFactories()
     {
     }
 
@@ -32,9 +32,8 @@ public class MemoryQueueFactories
         return agendaProgressMemoryQueueFactory;
     }
 
-    public static MemoryQueueFactories getMemoryQueueFactories()
+    public MemoryQueueFactory<AgendaInfo> getAgendaInfoMemoryQueueFactory()
     {
-        return memoryQueueFactories;
+        return agendaInfoMemoryQueueFactory;
     }
-
 }

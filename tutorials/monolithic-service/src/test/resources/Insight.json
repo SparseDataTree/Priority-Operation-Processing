@@ -1,8 +1,0 @@
-{
-  "id": "testInsight",
-  "resourcePoolId": "testResourcePoolId",
-  "isGlobal": "true",
-  "title": "My Insight",
-  "schedulingAlgorithm": "FirstInFirstOut",
-  "allowedCustomerIds": ["testCustomerId"]
-}
